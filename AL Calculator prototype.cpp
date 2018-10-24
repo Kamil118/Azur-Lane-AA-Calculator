@@ -11,7 +11,7 @@ using namespace std;
 
 struct ship{
 public:
-int ID;
+string ID;
 int AA;
 int reload;
 float efficency;
@@ -20,6 +20,7 @@ int skill2;
 int skill3;
 int skill4;
 short int guncount;
+string name;
 };
 
 struct gun{
@@ -32,8 +33,12 @@ int range;
 };
 
 struct dps_comb{
+
 public:
 string *gun;
+long double dps;
+int lower_dps;
+int higher_dps;
 
 void set_guncount(int x){
 gun = new string [x];
@@ -97,7 +102,7 @@ void read_ships(ship *ships, int shipcount, bool *failed){
         for(;fileinput[j] != 19; j++){
             temp += fileinput[j];
         }
-        ships[i].ID = atoi(temp.c_str());
+        ships[i].ID = temp;
         temp = "";
         j++;
 
@@ -113,6 +118,35 @@ void read_ships(ship *ships, int shipcount, bool *failed){
             temp += fileinput[j];
         }
         ships[i].reload = atoi(temp.c_str());
+
+
+        if(ships[i].ID == "-1"){//Special case for ships not on the list
+
+                temp = "";
+                j++;
+
+                for(;fileinput[j] != 19; j++){
+                temp += fileinput[j];
+                }
+                ships[i].name = temp;
+
+                temp = "";
+                j++;
+
+                for(;fileinput[j] != 19; j++){
+                temp += fileinput[j];
+                }
+                ships[i].efficency = atof(temp.c_str());
+
+                temp = "";
+                j++;
+
+                for(;fileinput[j] != 13 && fileinput[j] != 19 &&  j < fileinput.length(); j++){
+                temp += fileinput[j];
+                }
+                ships[i].guncount = atoi(temp.c_str());
+
+        }
     }
 }
 
