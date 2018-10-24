@@ -2,11 +2,16 @@
 #include <fstream>
 #include <string>
 #include <conio.h>
+#include <algorithm>
+#include <math.h>
+#include <vector>
 
 using namespace std;
 
 
 struct ship{
+public:
+int ID;
 int AA;
 int reload;
 float efficency;
@@ -18,6 +23,7 @@ short int guncount;
 };
 
 struct gun{
+public:
 string name;
 double reload;
 int dmg;
@@ -25,11 +31,24 @@ int AA;
 int range;
 };
 
-void read_guns(gun *AAgun, int how_many){
+struct dps_comb{
+public:
+string *gun;
+
+void set_guncount(int x){
+gun = new string [x];
+};
+};
+
+
+void read_guns(gun *AAgun){
     ifstream file ("guns.txt");
     string fileinput;
 
     getline(file,fileinput);
+    int how_many = atoi(fileinput.c_str());
+    cout << how_many;
+
     getline(file,fileinput);
 
 
@@ -48,26 +67,89 @@ for (int i=0; i<how_many; i++){
 
         getline(file,fileinput);
         AAgun[i].range = atoi(fileinput.c_str());
+
+        getline(file,fileinput);
 }
 return;
 };
 
 
-int main(){
-string fileinput;
-const bool isshippickingdone = false;
-if(isshippickingdone == true){
- ifstream ships ("ships.txt");
+
+void read_ships(ship *ships, int shipcount, bool *failed){
+    ifstream file ("ships.txt");
+    string fileinput;
 
 
+    getline(file,fileinput);
+
+
+    for(int i = 0; i < shipcount && i<6; i++){
+
+        if(file.eof()){
+            *failed = true;
+            return;
+        } //throw error if reaches eof unexpectedly ie ship count doesn't match the data
+
+        int j = 0;
+        string temp = "";
+        getline(file,fileinput);
+
+        for(;fileinput[j] != 19; j++){
+            temp += fileinput[j];
+        }
+        ships[i].ID = atoi(temp.c_str());
+        temp = "";
+        j++;
+
+        for(;fileinput[j] != 19; j++){
+            temp += fileinput[j];
+        }
+        ships[i].AA = atoi(temp.c_str());
+
+        temp = "";
+        j++;
+
+        for(;fileinput[j] != 19; j++){
+            temp += fileinput[j];
+        }
+        ships[i].reload = atoi(temp.c_str());
+    }
 }
 
- ifstream guns ("guns.txt");
- if(!guns.is_open()){
-    cout << "Failed to find guns.txt";
-    getch();
-    return 1;
- }
+int main(){
+string fileinput;
+
+
+    //read ships
+    ifstream shipfile ("ships.txt");
+    if(!shipfile.is_open()){
+        cout << "Failed to find ships.txt";
+        getch();
+        return 1;
+    }
+
+    getline(shipfile,fileinput);
+
+    ship ships[atoi(fileinput.c_str())];
+
+
+    bool failed = false;
+    read_ships(&ships[0], atoi(fileinput.c_str()), &failed);
+    if(failed){
+        cout << "Please check ships.txt";
+        getch();
+        return 1;
+    }
+    cout << ships[1].ID << endl;
+
+
+    //read guns
+    ifstream guns ("guns.txt");
+    if(!guns.is_open()){
+        cout << "Failed to find guns.txt";
+        getch();
+        return 1;
+    }
 
 
     getline(guns,fileinput);
@@ -77,7 +159,8 @@ if(isshippickingdone == true){
 
     gun AAgun[amount_of_guns];
 
-    read_guns(&AAgun[0], amount_of_guns);
+    read_guns(&AAgun[0]);
+
 
 
 }
