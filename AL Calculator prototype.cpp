@@ -75,6 +75,7 @@ string fileinput;
     efficiency.resize(length+1);
     guncount.resize(length+1);
     skill.resize(length+1);
+    getline(file,fileinput);
 
     for(int i = 1; i<=length; i++){
 
@@ -85,7 +86,6 @@ string fileinput;
 
         int j = 0;
         string temp = "";
-        getline(file,fileinput);
 
         for(;fileinput[j] != 19; j++) temp += fileinput[j];
 
@@ -128,6 +128,8 @@ string fileinput;
 
                 skill[i].s4 = atoi(temp.c_str());
                 temp = "";
+
+                getline(file,fileinput);
 
             }
 
