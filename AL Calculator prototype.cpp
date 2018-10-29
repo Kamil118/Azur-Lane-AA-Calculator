@@ -45,6 +45,97 @@ gun = new string [x];
 };
 };
 
+struct shiplist{
+    const int length = 500; //at least the highest id of given class, possibly later read from shiplist
+
+    struct skills{
+    int s1;
+    int s2;
+    int s3;
+    int s4;
+    };
+
+public:
+vector<string> name;
+vector<double> efficiency;
+vector<short int> guncount;
+vector<skills> skill;
+
+void set_ships(string filename,int *errorcode = NULL){
+*errorcode = 0;
+string fileinput;
+
+    fstream file (filename.c_str());
+    if(!file.is_open()){
+        *errorcode = 1;
+        return;
+    }
+
+    name.resize(length+1);
+    efficiency.resize(length+1);
+    guncount.resize(length+1);
+    skill.resize(length+1);
+
+    for(int i = 1; i<=length; i++){
+
+            if(file.eof()){
+            *errorcode = 2;
+            return;
+        } //throw error if reaches eof unexpectedly ie ship count doesn't match the data
+
+        int j = 0;
+        string temp = "";
+        getline(file,fileinput);
+
+        for(;fileinput[j] != 19; j++) temp += fileinput[j];
+
+            int ID = atoi(temp.c_str());
+
+            if(ID == i){
+                temp = "";
+
+                for(;fileinput[j] != 19; j++) temp += fileinput[j];
+
+                name[i] = temp;
+                temp = "";
+
+                for(;fileinput[j] != 19; j++) temp += fileinput[j];
+
+                efficiency[i] = atof(temp.c_str());
+                temp = "";
+
+                for(;fileinput[j] != 19; j++) temp += fileinput[j];
+
+                guncount[i] = atoi(temp.c_str());
+                temp = "";
+
+                for(;fileinput[j] != 13 && fileinput[j] != 19 &&  j < fileinput.length(); j++)
+
+                skill[i].s1 = atoi(temp.c_str());
+                temp = "";
+
+                for(;fileinput[j] != 13 && fileinput[j] != 19 &&  j < fileinput.length(); j++)
+
+                skill[i].s2 = atoi(temp.c_str());
+                temp = "";
+
+                for(;fileinput[j] != 13 && fileinput[j] != 19 &&  j < fileinput.length(); j++)
+
+                skill[i].s3 = atoi(temp.c_str());
+                temp = "";
+
+                for(;fileinput[j] != 13 && fileinput[j] != 19 &&  j < fileinput.length(); j++)
+
+                skill[i].s4 = atoi(temp.c_str());
+                temp = "";
+
+            }
+
+        }
+    }
+
+};
+
 
 void read_guns(gun *AAgun){
     ifstream file ("guns.txt");
@@ -80,7 +171,7 @@ return;
 
 
 
-void read_ships(ship *ships, int shipcount, bool *failed){
+void read_ships(ship *ships, int shipcount, bool *failed = NULL){
     ifstream file ("ships.txt");
     string fileinput;
 
@@ -149,6 +240,9 @@ void read_ships(ship *ships, int shipcount, bool *failed){
         }
     }
 }
+
+
+
 
 int main(){
 string fileinput;
