@@ -1,0 +1,28 @@
+4
+
+Quadruple 40mm L60 Mk2 Bofors
+1.04
+120
+45
+28
+
+8x 40mm QF 2 pounder Pom Pom
+1.17
+128
+45
+25
+
+Twin Bofors 40mm Autocannon STAAG
+0.80
+96
+45
+30
+
+Twin 113mm BD RP10 Mk
+1.36
+130
+45
+35
+
+
+
