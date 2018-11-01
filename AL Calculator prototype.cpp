@@ -448,7 +448,8 @@ string fileinput;
     }
 
     long int guncomp_count = pow(amount_of_guns,ship_count);
-    dps_comb guncomp[guncomp_count];
+    dps_comb *guncomp;
+    guncomp =  new dps_comb [guncomp_count];
 
     cout << "calculating dps, this might take a while...";
 
