@@ -25,7 +25,7 @@ short int guncount;
 string name;
 
 float reload_time;
-int AA_damage;
+float AA_damage;
 string AA_gun_name;
 };
 
@@ -143,9 +143,9 @@ for(long int i = 1; i < guncomp_count; i++){
                         float temp = (100+ships[a].reload);
                         float to_root = (200/temp);
                         ships[a].reload_time = guns[current_gun[a]].reload * sqrt(to_root);
-                        ships[a].AA_damage = guns[current_gun[a]].dmg * ships[a].efficency * (100 + ships[a].AA) / 100;
+                        float AA = 100 + ships[a].AA;
+                        ships[a].AA_damage = guns[current_gun[a]].dmg * ships[a].efficency * AA / 100;
                         ships[a].AA_gun_name = guns[current_gun[a]].name;
-
             }
 
 
@@ -154,10 +154,10 @@ for(long int i = 1; i < guncomp_count; i++){
             total_damage = 0;
 
             for(int j = 0; j<shipcount; j++){
-                total_damage =+ ships[j].AA_damage * ships[j].guncount;
+                total_damage += ships[j].AA_damage * ships[j].guncount;
             }
             for(int j = 0; j<shipcount; j++){
-                total_reload =+ ships[j].reload_time * ships[j].guncount;
+                total_reload += ships[j].reload_time * ships[j].guncount;
             }
             total_reload = (total_reload/guncount) + 0.5;
 
@@ -459,10 +459,8 @@ string fileinput;
      "|            Best gun combination" << endl <<
      "|--------------------------------------------" << endl;
      for(int i = 0; i < ship_count;i++)
-     cout << "|   " << guncomp[1].gun[i] << endl;
+     cout << "|   " << guncomp[guncomp_count-1].gun[i] << endl;
 cout << "|--------------------------------------------" << endl;
-
-
 
 
 system("pause");
