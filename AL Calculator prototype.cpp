@@ -143,7 +143,7 @@ for(long int i = 1; i < guncomp_count; i++){
                         float temp = (100+ships[a].reload);
                         float to_root = (200/temp);
                         ships[a].reload_time = guns[current_gun[a]].reload * sqrt(to_root);
-                        float AA = 100 + ships[a].AA;
+                        float AA = 100 + ships[a].AA + guns[current_gun[a]].AA;
                         ships[a].AA_damage = guns[current_gun[a]].dmg * ships[a].efficency * AA / 100;
                         ships[a].AA_gun_name = guns[current_gun[a]].name;
             }
