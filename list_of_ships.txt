@@ -1,0 +1,81 @@
+Name	Efficiency	Guncount	Hull Class	Class	Skill1	Skill2	Skill3
+Bulin	1.00	1	DD	Bullin			
+Purin	1.00	1	DD	Bullin			
+Cassin	1.30	1	DD	Mahan	Quick Reload		
+Downes	1.30	1	DD	Mahan	Quick Reload		
+Gridley	1.25	1	DD	Gridley			
+Craven	1.25	1	DD	Gridley			
+McCall	1.25	1	DD	Gridley			
+Maury	1.25	1	DD	Gridley			
+Fletcher	1.30	1	DD	Fletcher	Tactical Command - DD		
+Charles Ausburne	1.30	1	DD	Fletcher			
+Thatcher	1.30	1	DD	Fletcher			
+Aulick	1.30	1	DD	Fletcher	Quick Reload		
+Foote	1.30	1	DD	Fletcher	Quick Reload		
+Spence	1.30	1	DD	Fletcher	Quick Reload		
+Benson	1.25	1	DD	Benson			
+Laffey	1.25	1	DD	Benson	Solomon Wargod	Termination Mode	
+Sims	1.3	1	DD	Sims			
+Hammann	1.35	1	DD	Sims	Anti-Air Mode		
+Eldridge	1.25	1	DD	Cannon			
+Omaha	1.3	1	CL	Omaha	Quick Reload		
+Raleigh	1.3	1	CL	Omaha	Quick Reload		
+Brooklyn	1	1	CL	Brooklyn			
+Phoenix	1	1	CL	Brooklyn			
+Helena	1	1	CL	St. Louis			
+Atlanta	1.6	1	CL	Atlanta	Anti-Air Command - Cruiser	Anti-Air Mode	
+Juneau	1.6	1	CL	Atlanta	Anti-Air Mode		
+San Diego	1.85	1	CL	Atlanta	I'm No. 1	Song of the Stars	
+Cleveland	1.2	1	CL	Cleveland	Anti-Air Mode		
+Columbia	1.2	1	CL	Cleveland	Anti-Air Mode		
+Pensacola	1.05	1	CA	Pensacola	Reload Order		
+Salt Lake City	1.05	1	CA	Pensacola			
+Northampton	1.05	1	CA	Northampton			
+Chicago	1.05	1	CA	Northampton			
+Houston	1.05	1	CA	Northampton			
+Portland	1.35	1	CA	Portland	My Sister's Really Great		
+Indianapolis	1.3	1	CA	Portland			
+Astoria	1.3	1	CA	New Orleans	Nasty Asty		
+Quincy	1.3	1	CA	New Orleans			
+Vincennes	1.3	1	CA	New Orleans			
+Wichita	1.05	1	CA	Wichita			
+Nevada	1	1		Nevada			
+Oklahoma	1	1		Nevada			
+Pennsylvania	1	1	BB	Pennsylvania			
+Arizona	1	1	BB	Pennsylvania			
+Tennessee	1	1	BB	Tennessee			
+California	1	1	BB	Tennessee			
+Colorado	1	1	BB	Colorado			
+Maryland	1	1	BB	Colorado			
+West Virginia	1	1	BB	Colorado			
+North Carolina	1	1	BB	North Carolina			
+Washington	1	1	BB	North Carolina			
+South Dakota	1	1	BB	South Dakota			
+Long Island	0.85	1	CVL	Long Island			
+Bogue	0.85	1	CVL	Bogue			
+Langley	0	0	CVL	Langley	Reload Command - CVL		
+Legington	0	0	CV	Lexington			
+Saratoga	0	0	CV	Lexington			
+Ranger	0	0	CVL	Ranger			
+Yorktown	0	0	CV	Yorktown			
+Enterprise	0	0	CV	Yorktown			
+Hornet	0	0	CV	Yorktown			
+Wasp	0	0	CV	Wasp			
+Vestal	1	4	AR	Vestal			
+Amazon	1.05	1	DD	A			
+Acasta	1.15	1	DD	A			
+Ardent	1.10	1	DD	A			
+Beagle	1.05	1	DD	B			
+Bulldog	1.05	1	DD	B			
+Comet	1.10	1	DD	C			
+Crescent	1.10	1	DD	C			
+Cygnet	1.10	1	DD	C			
+Foxhound	1.10	1	DD	F	Reload Command - DD		
+Fortune	1.10	1	DD	F			
+Glowworm	1.05	1	DD	G			
+Javelin	1.05	1	DD	J			
+Juno	1.05	1	DD	J			
+Vampire	1.05	1	DD	V			
+Leander	1.30	1	CL	Leander			
+Achilles	1	1	CL	Leander			
+Ajax	1	1	CL	Leander			

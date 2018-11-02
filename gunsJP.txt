@@ -12,11 +12,11 @@ Quadruple 40mm L60 Mk2 Bofors
 45
 25
 
-Twin 105mm SK C/33
-1.24
-122
+Twin Bofors 40mm Autocannon STAAG
+0.80
+96
 45
-32
+30
 
 Twin 113mm BD RP10 Mk
 1.36
@@ -35,3 +35,4 @@ Twin 20mm AA Oerlikon
 15
 12
 15
+

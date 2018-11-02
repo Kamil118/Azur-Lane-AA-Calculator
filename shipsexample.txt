@@ -1,0 +1,7 @@
+6
+a0	293	400	Example1	1	1
+a0	293	182	Belfap	1	1
+a0	1000	182	Example2	1	1
+a0	293	182	AnotherBelfap	1	1
+a0	293	748	Example3	1	1
+a0	45	145	Example4	1	1

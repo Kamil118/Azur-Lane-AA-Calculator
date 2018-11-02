@@ -12,18 +12,21 @@ using namespace std;
 struct ship{
 
 public:
-char type;
-int ID;
+string name;
 int AA;
 int reload;
-float efficency;
-int skill1;
-int skill2;
-int skill3;
-int skill4;
-short int guncount;
-string name;
 
+float efficency;
+string hull_class;
+string ship_class;
+string skill1;
+string skill2;
+string skill3;
+string skill4;
+short int guncount;
+
+float AA_mod;
+float reload_mod;
 float reload_time;
 float AA_damage;
 string AA_gun_name;
@@ -162,108 +165,13 @@ for(long int i = 1; i < guncomp_count; i++){
             total_reload = (total_reload/guncount) + 0.5;
 
             for(int j = 0; j<shipcount; j++){
-                dps_combi[i].gun[j] = ships[j].name + ":" + ships[j].AA_gun_name;
+                dps_combi[i].gun[j] = ships[j].name + ": " + ships[j].AA_gun_name;
             }
 
             dps_combi[i].dps = total_damage/total_reload;
     }
     cout << endl << "Sorting results, this might take a while...";
     dps_quickSort(&dps_combi[0],0, guncomp_count-1);
-};
-
-
-struct shiplist{
-
-
-    struct skills{
-    int s1;
-    int s2;
-    int s3;
-    int s4;
-    };
-
-public:
-vector<string> name;
-vector<double> efficiency;
-vector<short int> guncount;
-vector<skills> skill;
-
-void set_ships(string filename,int *errorcode = NULL){
-*errorcode = 0;
-int length = 500; //set to at least highest ID ship in the game, possibly load from file later
-string fileinput;
-
-    fstream file (filename.c_str());
-    if(!file.is_open()){
-        *errorcode = 1;
-        return;
-    }
-
-    name.resize(length+1);
-    efficiency.resize(length+1);
-    guncount.resize(length+1);
-    skill.resize(length+1);
-    getline(file,fileinput);
-
-    for(int i = 1; i<=length; i++){
-
-            if(file.eof()){
-            *errorcode = 2;
-            return;
-        } //throw error if reaches eof unexpectedly ie ship count doesn't match the data
-
-        int j = 0;
-        string temp = "";
-
-        for(;fileinput[j] != 19; j++) temp += fileinput[j];
-
-            int ID = atoi(temp.c_str());
-
-            if(ID == i){
-                temp = "";
-
-                for(;fileinput[j] != 19; j++) temp += fileinput[j];
-
-                name[i] = temp;
-                temp = "";
-
-                for(;fileinput[j] != 19; j++) temp += fileinput[j];
-
-                efficiency[i] = atof(temp.c_str());
-                temp = "";
-
-                for(;fileinput[j] != 19; j++) temp += fileinput[j];
-
-                guncount[i] = atoi(temp.c_str());
-                temp = "";
-
-                for(;fileinput[j] != 13 && fileinput[j] != 19 &&  j < fileinput.length(); j++)
-
-                skill[i].s1 = atoi(temp.c_str());
-                temp = "";
-
-                for(;fileinput[j] != 13 && fileinput[j] != 19 &&  j < fileinput.length(); j++)
-
-                skill[i].s2 = atoi(temp.c_str());
-                temp = "";
-
-                for(;fileinput[j] != 13 && fileinput[j] != 19 &&  j < fileinput.length(); j++)
-
-                skill[i].s3 = atoi(temp.c_str());
-                temp = "";
-
-                for(;fileinput[j] != 13 && fileinput[j] != 19 &&  j < fileinput.length(); j++)
-
-                skill[i].s4 = atoi(temp.c_str());
-                temp = "";
-
-                getline(file,fileinput);
-
-            }
-
-        }
-    }
-
 };
 
 
@@ -310,70 +218,88 @@ void read_ships(ship *ships, int shipcount, bool *failed = NULL){
 
     for(int i = 0; i < shipcount && i<6; i++){
 
+
+
         if(file.eof()){
             *failed = true;
             return;
         } //throw error if reaches eof unexpectedly ie ship count doesn't match the data
 
-        int j = 0;
-        string temp = "";
-        getline(file,fileinput);
+        string temp;
 
-        for(;fileinput[j] != 9; j++){
-            temp += fileinput[j];
-        }
+        getline(file,ships[i].name,'	');
 
-        ships[i].type = temp[0];
-
-        temp.erase(0,1);
-
-        ships[i].ID = atoi(temp.c_str());
-
-        temp = "";
-        j++;
-
-        for(;fileinput[j] != 9; j++){
-            temp += fileinput[j];
-        }
+        getline(file,temp,'	');
         ships[i].AA = atoi(temp.c_str());
 
-        temp = "";
-        j++;
-
-        for(;fileinput[j] != 9; j++){
-            temp += fileinput[j];
-        }
+        getline(file,temp,'	');
         ships[i].reload = atoi(temp.c_str());
 
-        if(ships[i].type == 'a'){//Special case for ships not on the list
 
-                temp = "";
-                j++;
+        if(ships[i].name[0] == '$'){//Special case for ships not on the list
 
-                for(;fileinput[j] != 9; j++){
-                temp += fileinput[j];
-                }
-                ships[i].name = temp;
-                temp = "";
-                j++;
-
-                for(;fileinput[j] != 9; j++){
-                temp += fileinput[j];
-                }
+                getline(file,temp,'	');
                 ships[i].efficency = atof(temp.c_str());
 
-                temp = "";
-                j++;
 
-                for(;fileinput[j] != 13 && fileinput[j] != 9 &&  j < fileinput.length(); j++){
-                temp += fileinput[j];
-                }
+                getline(file,temp,'	');
                 ships[i].guncount = atoi(temp.c_str());
 
 
+                getline(file,ships[i].hull_class,'	');
+
+                getline(file,ships[i].ship_class,'	');
+
+                getline(file,ships[i].skill1,'	');
+
+                getline(file,ships[i].skill2,'	');
+
+                getline(file,ships[i].skill3,'	');
+
+                getline(file,ships[i].skill4);
+
+
+
         }
+        else getline(file,temp);
     }
 
+}
+
+void assign_ship(ship *assigned_ship, int *fail){
+fstream file ("list_of_ships.txt");
+string temp;
+getline(file,temp);
+if(!file.is_open()){
+    *fail = 1;
+    return;
+}
+
+if((*assigned_ship).name[0] == '$') return; //don't overwrite custom ships
+
+int i = 0;
+while(true){//searches for the correct ship on the list
+        string name;
+        getline(file,name, '	');
+        if((*assigned_ship).name == name) break;
+        getline(file,temp);
+        i++;
+        if(i > 10000){
+            *fail = 2;
+            return;
+        }
+}
+getline(file,temp, '	');
+(*assigned_ship).efficency = atof(temp.c_str());
+getline(file,temp, '	');
+(*assigned_ship).guncount = atoi(temp.c_str());
+getline(file,(*assigned_ship).hull_class, '	');
+getline(file,(*assigned_ship).ship_class, '	');
+
+getline(file,(*assigned_ship).skill1, '	');
+getline(file,(*assigned_ship).skill2, '	');
+getline(file,(*assigned_ship).skill3, '	');
+getline(file,(*assigned_ship).skill4, '	');
 }
 
 
@@ -419,6 +345,8 @@ string fileinput;
 
 
 
+
+
     getline(guns,fileinput);
     int amount_of_guns;
     amount_of_guns = atoi(fileinput.c_str());
@@ -431,16 +359,22 @@ string fileinput;
     cout<< "loaded" << endl;
 
 
-    /* Will set properties of ships later here, but need to have the files ready first, and that means manually getting stats to spreadsheet
-    shiplist normal_ships;
-    shiplist pr_ships;
-    shiplist colab_ships;
+    cout << "Assigning ship stats..." << endl;
 
-    normal_ships.set_ships("normalships.txt");
-    pr_ships.set_ships("prships.txt");
-    colab_ships.set_ships("colabships.txt");
+    int failure = 0;
+    for(int i = 0; i < ship_count; i++){
+        assign_ship((ships+i), &failure);
+        if(failure == 1){
+            cout << "list_of_ships.txt not found" << endl;
+            system("pause");
+            return 1;
+        }
+        if(failure == 2){
+            cout << "Ship called " << ships[i].name << " not found on the list" << endl;
+        }
+    }
 
-    */
+
     int guncount = 0;
 
     for(int i = 0;  i < ship_count; i++){
@@ -450,6 +384,7 @@ string fileinput;
     long int guncomp_count = pow(amount_of_guns,ship_count);
     dps_comb *guncomp;
     guncomp =  new dps_comb [guncomp_count];
+
 
     cout << "calculating dps, this might take a while...";
 
