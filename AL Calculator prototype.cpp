@@ -299,7 +299,7 @@ getline(file,(*assigned_ship).ship_class, '	');
 getline(file,(*assigned_ship).skill1, '	');
 getline(file,(*assigned_ship).skill2, '	');
 getline(file,(*assigned_ship).skill3, '	');
-getline(file,(*assigned_ship).skill4, '	');
+getline(file,(*assigned_ship).skill4);
 }
 
 
