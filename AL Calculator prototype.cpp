@@ -1,7 +1,6 @@
 #include <iostream>
 #include <fstream>
 #include <string>
-#include <conio.h>
 #include <algorithm>
 #include <math.h>
 #include <vector>
@@ -313,8 +312,8 @@ string fileinput;
     int ship_count;
     ifstream shipfile ("ships.txt");
     if(!shipfile.is_open()){
-        cout << "Failed to find ships.txt";
-        getch();
+        cout << "Failed to find ships.txt" << endl;
+        system("pause");
         return 1;
     }
 
@@ -328,8 +327,8 @@ string fileinput;
     bool failed = false;
     read_ships(&ships[0], atoi(fileinput.c_str()), &failed);
     if(failed){
-        cout << "Please check ships.txt";
-        getch();
+        cout << "Please check ships.txt" << endl;
+        system("pause");
         return 1;
     }
 
@@ -338,8 +337,8 @@ string fileinput;
     //read guns
     ifstream guns ("guns.txt");
     if(!guns.is_open()){
-        cout << "Failed to find guns.txt";
-        getch();
+        cout << "Failed to find guns.txt" << endl;
+        system("pause");
         return 1;
     }
 
