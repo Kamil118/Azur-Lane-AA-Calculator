@@ -35,7 +35,7 @@ string AA_gun_name;
 struct gun{
 public:
 string name;
-double reload;
+float reload;
 int dmg;
 int AA;
 int range;
@@ -45,7 +45,7 @@ struct dps_comb{
 
 public:
 string gun[6];
-long double dps;
+float dps;
 
 
 };
@@ -156,10 +156,10 @@ for(long int i = 0; i < guncomp_count; i++){
             total_damage = 0;
 
             for(int j = 0; j<shipcount; j++){
-                total_damage += ships[j].AA_damage * ships[j].guncount;
+                total_damage += (ships[j].AA_damage * ships[j].guncount);
             }
             for(int j = 0; j<shipcount; j++){
-                total_reload += ships[j].reload_time * ships[j].guncount;
+                total_reload += (ships[j].reload_time * ships[j].guncount);
             }
             total_reload = (total_reload/guncount) + 0.5;
 
@@ -400,6 +400,7 @@ string fileinput;
      "|--------------------------------------------" << endl;
      for(int i = 0; i < ship_count;i++)
      cout << "|   " << guncomp[guncomp_count-1].gun[i] << endl;
+     cout << "|   DPS: " << guncomp[guncount-1].dps << endl;
 cout << "|--------------------------------------------" << endl;
 
 
