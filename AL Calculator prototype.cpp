@@ -18,6 +18,7 @@ int reload;
 float efficency;
 string hull_class;
 string ship_class;
+string nation;
 string skill1;
 string skill2;
 string skill3;
@@ -59,7 +60,6 @@ void dps_quickSort(dps_comb *arr, int left, int right){
 
 
       /* partition */
-
       while (i <= j) {
 
             while (arr[i].dps < pivot)
@@ -130,7 +130,7 @@ bool skip_first = true;
 float total_reload = 0;
 float total_damage = 0;
 
-for(long int i = 1; i < guncomp_count; i++){
+for(long int i = 0; i < guncomp_count; i++){
 
 
 
@@ -164,7 +164,9 @@ for(long int i = 1; i < guncomp_count; i++){
             total_reload = (total_reload/guncount) + 0.5;
 
             for(int j = 0; j<shipcount; j++){
-                dps_combi[i].gun[j] = ships[j].name + ": " + ships[j].AA_gun_name;
+                if(ships[j].guncount != 0){
+                    dps_combi[i].gun[j] = ships[j].name + ": " + ships[j].AA_gun_name;}
+                else dps_combi[i].gun[j] = ships[j].name + " has no AA gun slots";
             }
 
             dps_combi[i].dps = total_damage/total_reload;
@@ -249,6 +251,8 @@ void read_ships(ship *ships, int shipcount, bool *failed = NULL){
 
                 getline(file,ships[i].ship_class,'	');
 
+                getline(file,ships[i].nation,'	');
+
                 getline(file,ships[i].skill1,'	');
 
                 getline(file,ships[i].skill2,'	');
@@ -294,6 +298,7 @@ getline(file,temp, '	');
 (*assigned_ship).guncount = atoi(temp.c_str());
 getline(file,(*assigned_ship).hull_class, '	');
 getline(file,(*assigned_ship).ship_class, '	');
+getline(file,(*assigned_ship).nation,'	');
 
 getline(file,(*assigned_ship).skill1, '	');
 getline(file,(*assigned_ship).skill2, '	');
