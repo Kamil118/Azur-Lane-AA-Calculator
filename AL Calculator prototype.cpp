@@ -113,45 +113,28 @@ void nextgun(int *current_gun, int shipcount, int amount_of_guns, int number){
 void calculate_dps(int shipcount, int amount_of_guns, int guncomp_count, int guncount, gun *guns, ship *ships, dps_comb *dps_combi){
 
 
-for(int i = 0; i < shipcount; i ++){
-    float temp = (100+ships[i].reload);
-    float to_root = (200/temp);
-    ships[i].reload_time = guns[0].reload * sqrt(to_root);
-    ships[i].AA_damage = guns[0].dmg * ships[i].efficency * (100 + ships[i].AA) / 100;
-}
-
-
 
 int current_gun[shipcount];
 for(int i = 0; i < shipcount; i++){
     current_gun[i] = 0;
 };
-bool skip_first = true;
+
+
 float total_reload = 0;
 float total_damage = 0;
 
 for(long int i = 0; i < guncomp_count; i++){
 
-
-
-
-            if(skip_first == false) nextgun(current_gun,shipcount,amount_of_guns, 0);
-
-
-
-
-
             for(int a = 0; a < shipcount; a++){
                         float temp = (100+ships[a].reload);
                         float to_root = (200/temp);
-                        ships[a].reload_time = guns[current_gun[a]].reload * sqrt(to_root);
-                        float AA = 100 + ships[a].AA + guns[current_gun[a]].AA;
-                        ships[a].AA_damage = guns[current_gun[a]].dmg * ships[a].efficency * AA / 100;
+                        ships[a].reload_time = guns[current_gun[a]].reload * sqrt(temp);
+                        ships[a].AA_damage = guns[current_gun[a]].dmg * ships[a].efficency * (100 + ships[a].AA + guns[current_gun[a]].AA) / 100;
                         ships[a].AA_gun_name = guns[current_gun[a]].name;
-            }
+            };
 
 
-            skip_first = false;
+
             total_reload = 0;
             total_damage = 0;
 
@@ -170,6 +153,8 @@ for(long int i = 0; i < guncomp_count; i++){
             }
 
             dps_combi[i].dps = total_damage/total_reload;
+
+            nextgun(current_gun,shipcount,amount_of_guns, 0);
     }
     cout << endl << "Sorting results, this might take a while...";
     dps_quickSort(&dps_combi[0],0, guncomp_count-1);
