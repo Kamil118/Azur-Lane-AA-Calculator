@@ -128,7 +128,7 @@ for(long int i = 0; i < guncomp_count; i++){
             for(int a = 0; a < shipcount; a++){
                         float temp = (100+ships[a].reload);
                         float to_root = (200/temp);
-                        ships[a].reload_time = guns[current_gun[a]].reload * sqrt(temp);
+                        ships[a].reload_time = guns[current_gun[a]].reload * sqrt(to_root);
                         ships[a].AA_damage = guns[current_gun[a]].dmg * ships[a].efficency * (100 + ships[a].AA + guns[current_gun[a]].AA) / 100;
                         ships[a].AA_gun_name = guns[current_gun[a]].name;
             };
@@ -360,6 +360,7 @@ string fileinput;
         }
         if(failure == 2){
             cout << "Ship called " << ships[i].name << " not found on the list" << endl;
+            return 1;
         }
     }
 
