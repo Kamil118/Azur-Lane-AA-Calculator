@@ -124,16 +124,19 @@ float total_reload = 0;
 float total_damage = 0;
 
 for(long int i = 0; i < guncomp_count; i++){
+                cout << endl;
+            for(int a = 0; a < shipcount; a++){
+                cout << current_gun[a] << endl;
+            };
+            system("pause");
 
             for(int a = 0; a < shipcount; a++){
-                        float temp = (100+ships[a].reload);
-                        float to_root = (200/temp);
+                        float to_root = 100+ships[a].reload;
+                        to_root = (200/to_root);
                         ships[a].reload_time = guns[current_gun[a]].reload * sqrt(to_root);
                         ships[a].AA_damage = guns[current_gun[a]].dmg * ships[a].efficency * (100 + ships[a].AA + guns[current_gun[a]].AA) / 100;
                         ships[a].AA_gun_name = guns[current_gun[a]].name;
             };
-
-
 
             total_reload = 0;
             total_damage = 0;
@@ -141,10 +144,13 @@ for(long int i = 0; i < guncomp_count; i++){
             for(int j = 0; j<shipcount; j++){
                 total_damage += (ships[j].AA_damage * ships[j].guncount);
             }
+
+
             for(int j = 0; j<shipcount; j++){
                 total_reload += (ships[j].reload_time * ships[j].guncount);
+
             }
-            total_reload = (total_reload/guncount) + 0.5;
+            total_reload = (total_reload/guncount) +0.5;
 
             for(int j = 0; j<shipcount; j++){
                 if(ships[j].guncount != 0){
@@ -272,7 +278,7 @@ while(true){//searches for the correct ship on the list
         if((*assigned_ship).name == name) break;
         getline(file,temp);
         i++;
-        if(i > 10000){
+        if(file.eof()){
             *fail = 2;
             return;
         }
@@ -368,7 +374,7 @@ string fileinput;
     int guncount = 0;
 
     for(int i = 0;  i < ship_count; i++){
-        guncount =+ ships[i].guncount;
+        guncount += ships[i].guncount;
     }
 
     long int guncomp_count = pow(amount_of_guns,ship_count);
