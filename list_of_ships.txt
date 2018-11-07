@@ -1,0 +1,281 @@
+Name	Efficiency	Guncount	Hull Class	Class	Nation	Skill1	Skill2	Skill3	Skill4	
+Bulin	1.00	1	DD	Bullin	Universal					
+Purin	1.00	1	DD	Bullin	Universal					
+Cassin	1.30	1	DD	Mahan	Union	Quick Reload				
+Downes	1.30	1	DD	Mahan	Union	Quick Reload				
+Gridley	1.25	1	DD	Gridley	Union					
+Craven	1.25	1	DD	Gridley	Union					
+McCall	1.25	1	DD	Gridley	Union					
+Maury	1.25	1	DD	Gridley	Union					
+Fletcher	1.30	1	DD	Fletcher	Union	Tactical Command - DD				
+Charles Ausburne	1.30	1	DD	Fletcher	Union					
+Thatcher	1.30	1	DD	Fletcher	Union					
+Aulick	1.30	1	DD	Fletcher	Union	Quick Reload				
+Foote	1.30	1	DD	Fletcher	Union	Quick Reload				
+Spence	1.30	1	DD	Fletcher	Union	Quick Reload				
+Benson	1.25	1	DD	Benson	Union					
+Laffey	1.25	1	DD	Benson	Union	Solomon Wargod	Termination Mode			
+Sims	1.3	1	DD	Sims	Union					
+Hammann	1.35	1	DD	Sims	Union	Anti-Air Mode				
+Eldridge	1.25	1	DD	Cannon	Union					
+Omaha	1.3	1	CL	Omaha	Union	Quick Reload				
+Raleigh	1.3	1	CL	Omaha	Union	Quick Reload				
+Brooklyn	1	1	CL	Brooklyn	Union					
+Phoenix	1	1	CL	Brooklyn	Union					
+Helena	1	1	CL	St. Louis	Union					
+Atlanta	1.6	1	CL	Atlanta	Union	Anti-Air Command - Cruiser	Anti-Air Mode			
+Juneau	1.6	1	CL	Atlanta	Union	Anti-Air Mode				
+San Diego	1.85	1	CL	Atlanta	Union	I'm No. 1	Song of the Stars			
+Cleveland	1.2	1	CL	Cleveland	Union	Anti-Air Mode				
+Columbia	1.2	1	CL	Cleveland	Union	Anti-Air Mode				
+Pensacola	1.05	1	CA	Pensacola	Union	Reload Order				
+Salt Lake City	1.05	1	CA	Pensacola	Union					
+Northampton	1.05	1	CA	Northampton	Union					
+Chicago	1.05	1	CA	Northampton	Union					
+Houston	1.05	1	CA	Northampton	Union					
+Portland	1.35	1	CA	Portland	Union	My Sister's Really Great				
+Indianapolis	1.3	1	CA	Portland	Union					
+Astoria	1.3	1	CA	New Orleans	Union	Nasty Asty				
+Quincy	1.3	1	CA	New Orleans	Union					
+Vincennes	1.3	1	CA	New Orleans	Union					
+Wichita	1.05	1	CA	Wichita	Union					
+Nevada	1	1		Nevada	Union					
+Oklahoma	1	1		Nevada	Union					
+Pennsylvania	1	1	BB	Pennsylvania	Union					
+Arizona	1	1	BB	Pennsylvania	Union					
+Tennessee	1	1	BB	Tennessee	Union					
+California	1	1	BB	Tennessee	Union					
+Colorado	1	1	BB	Colorado	Union					
+Maryland	1	1	BB	Colorado	Union					
+West Virginia	1	1	BB	Colorado	Union					
+North Carolina	1	1	BB	North Carolina	Union					
+Washington	1	1	BB	North Carolina	Union					
+South Dakota	1	1	BB	South Dakota	Union					
+Long Island	0.85	1	CVL	Long Island	Union					
+Bogue	0.85	1	CVL	Bogue	Union					
+Langley	0	0	CVL	Langley	Union	Reload Command - CVL				
+Legington	0	0	CV	Lexington	Union					
+Saratoga	0	0	CV	Lexington	Union					
+Ranger	0	0	CVL	Ranger	Union					
+Yorktown	0	0	CV	Yorktown	Union					
+Enterprise	0	0	CV	Yorktown	Union					
+Hornet	0	0	CV	Yorktown	Union					
+Wasp	0	0	CV	Wasp	Union					
+Vestal	1	4	AR	Vestal	Union					
+Amazon	1.05	1	DD	A	Royal					
+Acasta	1.15	1	DD	A	Royal					
+Ardent	1.10	1	DD	A	Royal					
+Beagle	1.05	1	DD	B	Royal					
+Bulldog	1.05	1	DD	B	Royal					
+Comet	1.10	1	DD	C	Royal					
+Crescent	1.10	1	DD	C	Royal					
+Cygnet	1.10	1	DD	C	Royal					
+Foxhound	1.10	1	DD	F	Royal	Reload Command - DD				
+Fortune	1.10	1	DD	F	Royal					
+Glowworm	1.05	1	DD	G	Royal					
+Javelin	1.05	1	DD	J	Royal					
+Juno	1.05	1	DD	J	Royal					
+Vampire	1.05	1	DD	V	Royal					
+Leander	1.30	1	CL	Leander	Royal					
+Achilles	1	1	CL	Leander	Royal					
+Ajax	1	1	CL	Leander	Royal					
+Sheffield	1.1	1	CL	Southampton	Royal					
+Edinburgh	1	1	CL	Edinburgh	Royal					
+Belfast	1	1	CL	Edinburgh	Royal					
+Arethusa	1.3	1	CL	Arethusa	Royal	Reload Order				
+Galatea	1.3	1	CL	Arethusa	Royal					
+Aurora	1.3	1	CL	Arethusa	Royal					
+London	1	1	CA	London	Royal					
+Shropshire	1	1	CA	London	Royal					
+Kent	1	1	CA	Kent	Royal					
+Suffolk	1	1	CA	Kent	Royal					
+Norfolk	1.2	1	CA	Norfolk	Royal					
+Dorsetshire	1.2	1	CA	Norfolk	Royal					
+York	1	1	CA	York	Royal					
+Exeter	1.15	1	CA	York	Royal					
+Renown	0.7	1	BC	Renown	Royal					
+Repulse	0.7	1	BC	Renown	Royal	Z's Counterattack				
+Hood	1	1	BC	Admiral	Royal	Glory of the Royal Navy				
+Queen Elizabeth	1	1	BB	Queen Elizabeth	Royal	Queen's Orders				
+Warspite	1	1	BB	Queen Elizabeth	Royal					
+Nelson	1	1	BB	Nelson	Royal					
+Rodney	1	1	BB	Nelson	Royal					
+Prince of Wales	1	1	BB	King George V	Royal	Royal Alliance				
+Duke of York	1	1	BB	King George V	Royal					
+Hermes	0.8	1	CVL	Hermes	Royal					
+Unicorn	0.8	1	CVL	Unicorn	Royal	Reload Command - Escort				
+Ark Royal	0	0	CV	Ark Royal	Royal					
+Illustrious	0	0	CV	Illustrious	Royal					
+Victorious	0	0	CV	Illustrious	Royal					
+Glorious	0	0	CV	Courageous	Royal					
+Erebus	1	1	BM	Erebus	Royal					
+Terror	1	1	BM	Erebus	Royal					
+Fubuki	0.75	1	DD	Fubuki	Sakura					
+Ayanami	0.75	1	DD	Ayanami	Sakura					
+Akatsuki	0.75	1	DD	Akatsuki	Sakura	DesDiv 6's Elite				
+Ikazuchi	0.75	1	DD	Akatsuki	Sakura	DesDiv 6's Elite				
+Inazuma	0.75	1	DD	Akatsuki	Sakura	DesDiv 6's Elite				
+Shiratsuyu	0.75	1	DD	Shiratsuyu	Sakura					
+Yuudachi	0.85	1	DD	Shiratsuyu	Sakura	Nightmare of Solomon				
+Shigure	0.75	1	DD	Shiratsuyu	Sakura					
+Yukikaze	0.75	1	DD	Kagerou	Sakura					
+Kagerou	0.75	1	DD	Kagerou	Sakura					
+Shiranui	0.75	1	DD	Kagerou	Sakura					
+Nowaki	0.75	1	DD	Kagerou	Sakura					
+Hatsuharu	0.75	1	DD	Hatsuharu	Sakura					
+Wakaba	0.75	1	DD	Hatsuharu	Sakura					
+Hatsushimo	0.75	1	DD	Hatsuharu	Sakura					
+Ariake	0.75	1	DD	Hatsuharu	Sakura					
+Yuugure	0.75	1	DD	Hatsuharu	Sakura					
+Kuroshio	0.75	1	DD	Kagerou	Sakura					
+Oyashio	0.75	1	DD	Kagerou	Sakura					
+Yuubari	1.25	1	CL	Yuubari	Sakura					
+Nagara	1.25	1	CL	Nagara	Sakura					
+Isuzu	1.6	2	CL	Nagara	Sakura	Anti-Air Mode				
+Abukuma	1.25	1	CL	Nagara	Sakura					
+Mogami	1.05	1	CL	Mogami	Sakura					
+Mikuma	1	1	CL	Mogami	Sakura					
+Furutaka	1.05	1	CA	Furutaka	Sakura					
+Kako	1.05	1	CA	Furutaka	Sakura					
+Aoba	1	1	CA	Aoba	Sakura					
+Kinugasa	1	1	CA	Aoba	Sakura					
+Myoukou	1	1	CA	Myoukou	Sakura					
+Nachi	1	1	CA	Myoukou	Sakura					
+Takao	1	1	CA	Takao	Sakura					
+Atago	1	1	CA	Takao	Sakura					
+Maya	1.2	1	CA	Takao	Sakura	10,000 Nights: Trayastrimsa				
+Choukai	1.1	1	CA	Takao	Sakura					
+Kongou	0.9	1	BB	Kongou	Sakura					
+Hiei	0.9	1	BB	Kongou	Sakura					
+Haruna	0.9	1	BB	Kongou	Sakura					
+Kirishima	0.9	1	BB	Kongou	Sakura					
+Fusou	0.85	1	BB	Fusou	Sakura					
+Yamashiro	0.85	1	BB	Fusou	Sakura					
+Ise	0.95	1	BB	Ise	Sakura					
+Hyuuga	0.95	1	BB	Ise	Sakura					
+Nagato	1	1	BB	Nagato	Sakura	The 4th Combined Fleet Flagship				
+Mutsu	1	1	BB	Nagato	Sakura					
+Hiyou	0	0	CVL	Hiyou	Sakura					
+Junyou	0	0	CVL	Hiyou	Sakura					
+Houshou	0	0	CVL	Houshou	Sakura					
+Shouhou	0.8	1	CVL	Zuihou	Sakura					
+Akagi	0	0	CV	Akagi	Sakura					
+Kaga	0	0	CV	Kaga	Sakura					
+Souryuu	0	0	CV	Souryuu	Sakura					
+Hiryuu	0	0	CV	Souryuu	Sakura					
+Shoukaku	0	0	CV	Shoukaku	Sakura					
+Zuikaku	0	0	CV	Shoukaku	Sakura					
+Taihou	0	0	CV	Taihou	Sakura					
+Akashi	1	4	AR	Akashi	Sakura	Reload Command - Escort				
+Z1	0.75	1	DD	Z1	Ironblood					
+Z23	0.85	1	DD	Z23	Ironblood					
+Z25	0.75	1	DD	Z23	Ironblood					
+Konigsberg	1.3	1	CL	Konigsberg	Ironblood	Reload Command - Cruisers				
+Karlsruhe	1.35	1	CL	Konigsberg	Ironblood					
+Koln	1.3	1	CL	Konigsberg	Ironblood					
+Leipzig	1.3	1	CL	Leipzig	Ironblood	Tactical Command - Cruisers				
+Admiral Hipper	1	1	CA	Admiral Hipper	Ironblood					
+Prinz Eugen	1.2	1	CA	Admiral Hipper	Ironblood					
+Deutschland	1	1	CA	Deutschland	Ironblood					
+Admiral Graf.Spee	1	1	CA	Deutschland	Ironblood					
+Scharnhorst	0.7	1	BB	Scharnhorst	Ironblood					
+Gneisenau	0.7	1	BB	Scharnhorst	Ironblood					
+Tirpitz	0.9	1	BB	Bismarck	Ironblood					
+Graf Zeppelin	0	0	CV	Graf Zeppelin	Ironblood					
+An Shan	1.05	1	DD	An Shan	Radiance					
+Fu Shun	1	1	DD	An Shan	Radiance					
+Chang Chun	1.05	1	DD	An Shan	Radiance	Alliance and Mutual Assistance				
+Tai Yuan	1.05	1	DD	An Shan	Radiance					
+Yat Sen	0.8	2	CL	Yat Sen	Radiance					
+Ning Hai	1.35	1	CL	Ning Hai	Radiance					
+Ping Hai	1.35	1	CL	Ning Hai	Radiance					
+Avrora	0.8	1	CL	Pallada	Russia					
+Bailey	1.25	1	DD	Benson	Union					
+Z19	0.75	1	DD	Z17	Ironblood					
+Z20	0.75	1	DD	Z17	Ironblood					
+Z21	0.75	1	DD	Z17	Ironblood					
+Z46	1.4	1	DD	Z46	Ironblood					
+Kamikaze	0.8	1	DD	Kamikaze	Sakura					
+Matsukaze	0.8	1	DD	Kamikaze	Sakura	Quick Reload				
+Mutsuki	0.75	1	DD	Mutsuki	Sakura	Quick Reload				
+Kisaragi	0.75	1	DD	Mutsuki	Sakura	Quick Reload				
+Uzuki	0.75	1	DD	Mutsuki	Sakura	Quick Reload				
+Minazuki	0.75	1	DD	Mutsuki	Sakura	Quick Reload				
+Fumizuki	0.75	1	DD	Mutsuki	Sakura	Quick Reload				
+Mikazuki	0.75	1	DD	Mutsuki	Sakura	Quick Reload				
+Kawakaze	0.85	1	DD	Shiratsuyu	Sakura					
+Niizuki	1.35	1	DD	Akizuki	Sakura	Anti-Air Mode	Reload Order			
+Harutsuki	1.35	1	DD	Akizuki	Sakura	Aerial Support				
+Yoizuki	1.35	1	DD	Akizuki	Sakura	Aerial Support				
+Radford	1.3	1	DD	Fletcher	Union					
+Jenkins	1.3	1	DD	Fletcher	Union					
+Nicholas	1.3	1	DD	Fletcher	Union	Battle of Kula Gulf				
+Richmond	1.3	1	CL	Omaha	Union					
+Honolulu	1	1	CL	Brooklyn	Union					
+St. Louis	1	1	CL	St. Louis	Union	LuckyLou	Anti-Air Mode			
+Jupiter	1	1	DD	J	Royal					
+Jersey	1	1	DD	J	Royal					
+Sendai	1.15	1	CL	Sendai	Sakura	Torpedo Fleet				
+Jintsuu	1.15	1	CL	Sendai	Sakura	Splendid 2nd Torpedo Squadron				
+Urakaze	0.75	1	DD	Kagerou	Sakura					
+Isokaze	0.75	1	DD	Kagerou	Sakura	Winds of Companion				
+Hamakaze	0.75	1	DD	Kagerou	Sakura					
+Tanikaze	0.75	1	DD	Kagerou	Sakura					
+Mikasa	0	0	BB	Mikasa	Sakura	Reborn Combined Fleet Flagship				
+Agano	1	1	CL	Agano	Sakura					
+Matchless	1	1	DD	M	Royal					
+Musketeer	1	1	DD	M	Royal					
+Fiji	1.1	1	CL	Fiji	Royal	Crete's Black Cloud				
+Jamaica	1.1	1	CL	Fiji	Royal					
+Montpelier	1.2	1	CL	Cleveland	Union	Anti-Air Mode				
+Denver	1.2	1	CL	Cleveland	Union	Anti-Air Mode				
+Asashio	0.75	1	DD	Asashio	Sakura	The 8th Destroyer Division				
+Ooshio	0.75	1	DD	Asashio	Sakura					
+Michishio	0.75	1	DD	Asashio	Sakura					
+Arashio	0.75	1	DD	Asashio	Sakura					
+Belchan	1	1	CL	Edinburgh	Royal					
+Abercrombie	1	1	BM	Roberts	Royal					
+Sussex	1	1	CA	London	Royal					
+I-19	0	0	SS	B1	Sakura					
+I-26	0	0	SS	B1	Sakura					
+I-58	0	0	SS	B3	Sakura					
+U-81	0	0	SS	VIIC	Ironblood					
+Dace	0	0	SS	Gato	Union					
+U-47	0	0	SS	VIIB	Ironblood					
+U-557	0	0	SS	VIIC	Ironblood					
+Z35	1.25	1	DD	Z35	Ironblood	Overload Firepower				
+Z18	0.75	1	DD	Z17	Ironblood					
+Le Triomphant	1.4	1	DD	Le Fantasque	Free France	Offensive Configuration				
+Forbin	0.8	1	DD	L'Adroit	Free France					
+Emile Bertin	1	1	CL	Emile Bertin	Free France					
+Surcouf	0	0	SS	Surcouf	Free France					
+Le Mars	0.8	1	DD	L'Adroit	Vichy					
+Dunkerque	0.7	1	BB	Dunkerque	Vichy					
+Jean Bart	0.7	1	BB	Richelieu	Vichy					
+Massachusetts	1	1	BB	South Dakota	Union	Big Mamie				
+Bush	1.35	1	DD	Fletcher	Union	Anti-Air Alert				
+Centaur	0	0	CVL	Centaur	Royal					
+Essex	0	0	CV	Essex	Union					
+Albacore	0	0	SS	Gato	Union					
+Le Temeraire	0.75	1	DD	Le Hardi	Free France	Berserk Shooter				
+Memphis	1.25	1	CL	Omaha	Union	Quick Reload				
+Newcastle	1.45	1	CL	Town	Royal	Anti-Air Mode	Reload Order			
+Hobby	1.25	1	DD	Benson	Union	Little Star				
+Kalk	1.25	1	DD	Benson	Union					
+Minneapolis	1.25	1	CA	New Orleans	Union					
+HDN Neptune	1	1	CL	Neptunia	Neptunia					
+Noire	1.1	1	CA	Neptunia	Neptunia					
+Blanc	0.75	1	DD	Neptunia	Neptunia					
+Vert	0	0	CV	Neptunia	Neptunia	Assam Link				
+Purple Heart	1	1	CL	Neptunia	Neptunia					
+Black Heart	1.1	1	CA	Neptunia	Neptunia					
+White Heart	0,75	1	DD	Neptunia	Neptunia					
+Green Heart	0	0	CV	Neptunia	Neptunia					
+22	0.95	1	DD	Bilibili	Bilibili	Bilibili Mascot Girl				
+33	0.95	1	DD	Bilibili	Bilibili	Bilibili Mascot Girl				
+HMS Neptune	1	1	CL	Neptune	Royal	Goddess of the Sea				
+Monarch	1.1	1	BB	Monarch	Royal	Against the Current				
+Ibuki	1.1	1	CA	Ibuki	Sakura					
+Izumo	0.8	1	BB	Izumo	Sakura					
+Roon	1.1	1	CA	Roon	Ironblood	Professional Reloader				
+Saint Louis	1.25	1	CA	Saint Louis	Free France					

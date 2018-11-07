@@ -1,0 +1,10 @@
+6										
+Spence	456	4523				
+$2	456	943	1	1	DD	None				
+$3	486	425	1	11	DD	None				
+$4	86641	8952	1	1	CL	None				
+$5	451	588	1	1	BB	None				
+$6	453	456	1	1	CC	None				
+Ship Name	AA (without AA gun)	Reload	Efficiency (in 1.00)	AA Guncount	Hull Class	Ship's Class	Skill1	Skill2	Skill3	Skill4
+start with $ for unknow ships			Set these only for unknown ships							
+										

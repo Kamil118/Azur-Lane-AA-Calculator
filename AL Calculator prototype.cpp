@@ -1,7 +1,6 @@
 #include <iostream>
 #include <fstream>
 #include <string>
-#include <conio.h>
 #include <algorithm>
 #include <math.h>
 #include <vector>
@@ -12,18 +11,22 @@ using namespace std;
 struct ship{
 
 public:
-char type;
-int ID;
+string name;
 int AA;
 int reload;
-float efficency;
-int skill1;
-int skill2;
-int skill3;
-int skill4;
-short int guncount;
-string name;
 
+float efficency;
+string hull_class;
+string ship_class;
+string nation;
+string skill1;
+string skill2;
+string skill3;
+string skill4;
+short int guncount;
+
+float AA_mod;
+float reload_mod;
 float reload_time;
 float AA_damage;
 string AA_gun_name;
@@ -32,7 +35,7 @@ string AA_gun_name;
 struct gun{
 public:
 string name;
-double reload;
+float reload;
 int dmg;
 int AA;
 int range;
@@ -42,59 +45,11 @@ struct dps_comb{
 
 public:
 string gun[6];
-long double dps;
-
-
+float dps;
 };
 
-void dps_quickSort(dps_comb *arr, int left, int right){
-// modified from http://www.algolist.net/Algorithms/Sorting/Quicksort if you want me to remove this please say
-      int i = left, j = right;
-
-      dps_comb tmp;
-
-      long double pivot = arr[(left + right) / 2].dps;
-
-
-      /* partition */
-
-      while (i <= j) {
-
-            while (arr[i].dps < pivot)
-
-                  i++;
-
-            while (arr[j].dps > pivot)
-
-                  j--;
-
-            if (i <= j) {
-
-                  tmp = arr[i];
-
-                  arr[i] = arr[j];
-
-                  arr[j] = tmp;
-
-                  i++;
-
-                  j--;
-
-            }
-
-      };
-
-
-      /* recursion */
-
-      if (left < j)
-
-            dps_quickSort(arr, left, j);
-
-      if (i < right)
-
-            dps_quickSort(arr, i, right);
-
+bool dps_compare(dps_comb comb1, dps_comb comb2){
+    return (comb1.dps < comb2.dps);
 };
 
 void nextgun(int *current_gun, int shipcount, int amount_of_guns, int number){
@@ -108,162 +63,53 @@ void nextgun(int *current_gun, int shipcount, int amount_of_guns, int number){
 
 }
 
-void calculate_dps(int shipcount, int amount_of_guns, int guncomp_count, int guncount, gun *guns, ship *ships, dps_comb *dps_combi){
-
-
-for(int i = 0; i < shipcount; i ++){
-    float temp = (100+ships[i].reload);
-    float to_root = (200/temp);
-    ships[i].reload_time = guns[0].reload * sqrt(to_root);
-    ships[i].AA_damage = guns[0].dmg * ships[i].efficency * (100 + ships[i].AA) / 100;
-}
-
+void calculate_dps(int shipcount, int amount_of_guns, int guncomp_count, int guncount, gun *guns, ship *ships, vector <dps_comb> *dps_combi){
 
 
 int current_gun[shipcount];
 for(int i = 0; i < shipcount; i++){
     current_gun[i] = 0;
 };
-bool skip_first = true;
-float total_reload = 0;
-float total_damage = 0;
-
-for(long int i = 1; i < guncomp_count; i++){
 
 
 
+for(long int i = 0; i < guncomp_count; i++){
 
-            if(skip_first == false) nextgun(current_gun,shipcount,amount_of_guns, 0);
-
-
-
-
+            dps_comb temp;
+            float total_reload = 0;
+            float total_damage = 0;
 
             for(int a = 0; a < shipcount; a++){
-                        float temp = (100+ships[a].reload);
-                        float to_root = (200/temp);
+                        float to_root = 100+ships[a].reload;
+                        to_root = (200/to_root);
                         ships[a].reload_time = guns[current_gun[a]].reload * sqrt(to_root);
-                        float AA = 100 + ships[a].AA + guns[current_gun[a]].AA;
-                        ships[a].AA_damage = guns[current_gun[a]].dmg * ships[a].efficency * AA / 100;
+                        ships[a].AA_damage = guns[current_gun[a]].dmg * ships[a].efficency * (100 + ships[a].AA + guns[current_gun[a]].AA) / 100;
                         ships[a].AA_gun_name = guns[current_gun[a]].name;
-            }
-
-
-            skip_first = false;
-            total_reload = 0;
-            total_damage = 0;
+            };
 
             for(int j = 0; j<shipcount; j++){
-                total_damage += ships[j].AA_damage * ships[j].guncount;
-            }
-            for(int j = 0; j<shipcount; j++){
-                total_reload += ships[j].reload_time * ships[j].guncount;
-            }
-            total_reload = (total_reload/guncount) + 0.5;
-
-            for(int j = 0; j<shipcount; j++){
-                dps_combi[i].gun[j] = ships[j].name + ":" + ships[j].AA_gun_name;
+                total_damage += (ships[j].AA_damage * ships[j].guncount);
             }
 
-            dps_combi[i].dps = total_damage/total_reload;
+
+            for(int j = 0; j<shipcount; j++){
+                total_reload += (ships[j].reload_time * ships[j].guncount);
+
+            }
+            total_reload = (total_reload/guncount) +0.5;
+
+            for(int j = 0; j<shipcount; j++){
+                if(ships[j].guncount != 0){
+                    temp.gun[j] = ships[j].name + ": " + ships[j].AA_gun_name;}
+                else temp.gun[j] = ships[j].name + " has no AA gun slots";
+            }
+
+            temp.dps = total_damage/total_reload;
+            dps_combi->push_back(temp);
+            nextgun(current_gun,shipcount,amount_of_guns, 0);
     }
     cout << endl << "Sorting results, this might take a while...";
-    dps_quickSort(&dps_combi[0],0, guncomp_count-1);
-};
-
-
-struct shiplist{
-
-
-    struct skills{
-    int s1;
-    int s2;
-    int s3;
-    int s4;
-    };
-
-public:
-vector<string> name;
-vector<double> efficiency;
-vector<short int> guncount;
-vector<skills> skill;
-
-void set_ships(string filename,int *errorcode = NULL){
-*errorcode = 0;
-int length = 500; //set to at least highest ID ship in the game, possibly load from file later
-string fileinput;
-
-    fstream file (filename.c_str());
-    if(!file.is_open()){
-        *errorcode = 1;
-        return;
-    }
-
-    name.resize(length+1);
-    efficiency.resize(length+1);
-    guncount.resize(length+1);
-    skill.resize(length+1);
-    getline(file,fileinput);
-
-    for(int i = 1; i<=length; i++){
-
-            if(file.eof()){
-            *errorcode = 2;
-            return;
-        } //throw error if reaches eof unexpectedly ie ship count doesn't match the data
-
-        int j = 0;
-        string temp = "";
-
-        for(;fileinput[j] != 19; j++) temp += fileinput[j];
-
-            int ID = atoi(temp.c_str());
-
-            if(ID == i){
-                temp = "";
-
-                for(;fileinput[j] != 19; j++) temp += fileinput[j];
-
-                name[i] = temp;
-                temp = "";
-
-                for(;fileinput[j] != 19; j++) temp += fileinput[j];
-
-                efficiency[i] = atof(temp.c_str());
-                temp = "";
-
-                for(;fileinput[j] != 19; j++) temp += fileinput[j];
-
-                guncount[i] = atoi(temp.c_str());
-                temp = "";
-
-                for(;fileinput[j] != 13 && fileinput[j] != 19 &&  j < fileinput.length(); j++)
-
-                skill[i].s1 = atoi(temp.c_str());
-                temp = "";
-
-                for(;fileinput[j] != 13 && fileinput[j] != 19 &&  j < fileinput.length(); j++)
-
-                skill[i].s2 = atoi(temp.c_str());
-                temp = "";
-
-                for(;fileinput[j] != 13 && fileinput[j] != 19 &&  j < fileinput.length(); j++)
-
-                skill[i].s3 = atoi(temp.c_str());
-                temp = "";
-
-                for(;fileinput[j] != 13 && fileinput[j] != 19 &&  j < fileinput.length(); j++)
-
-                skill[i].s4 = atoi(temp.c_str());
-                temp = "";
-
-                getline(file,fileinput);
-
-            }
-
-        }
-    }
-
+    sort(dps_combi->begin(),dps_combi->end(),dps_compare);
 };
 
 
@@ -278,6 +124,7 @@ void read_guns(gun *AAgun){
 
 
 for (int i=0; i<how_many; i++){
+
         getline(file,fileinput);
         AAgun[i].name = fileinput;
 
@@ -310,70 +157,91 @@ void read_ships(ship *ships, int shipcount, bool *failed = NULL){
 
     for(int i = 0; i < shipcount && i<6; i++){
 
+
+
         if(file.eof()){
             *failed = true;
             return;
         } //throw error if reaches eof unexpectedly ie ship count doesn't match the data
 
-        int j = 0;
-        string temp = "";
-        getline(file,fileinput);
+        string temp;
 
-        for(;fileinput[j] != 9; j++){
-            temp += fileinput[j];
-        }
+        getline(file,ships[i].name,'	');
 
-        ships[i].type = temp[0];
-
-        temp.erase(0,1);
-
-        ships[i].ID = atoi(temp.c_str());
-
-        temp = "";
-        j++;
-
-        for(;fileinput[j] != 9; j++){
-            temp += fileinput[j];
-        }
+        getline(file,temp,'	');
         ships[i].AA = atoi(temp.c_str());
 
-        temp = "";
-        j++;
-
-        for(;fileinput[j] != 9; j++){
-            temp += fileinput[j];
-        }
+        getline(file,temp,'	');
         ships[i].reload = atoi(temp.c_str());
 
-        if(ships[i].type == 'a'){//Special case for ships not on the list
 
-                temp = "";
-                j++;
+        if(ships[i].name[0] == '$'){//Special case for ships not on the list
 
-                for(;fileinput[j] != 9; j++){
-                temp += fileinput[j];
-                }
-                ships[i].name = temp;
-                temp = "";
-                j++;
-
-                for(;fileinput[j] != 9; j++){
-                temp += fileinput[j];
-                }
+                getline(file,temp,'	');
                 ships[i].efficency = atof(temp.c_str());
 
-                temp = "";
-                j++;
 
-                for(;fileinput[j] != 13 && fileinput[j] != 9 &&  j < fileinput.length(); j++){
-                temp += fileinput[j];
-                }
+                getline(file,temp,'	');
                 ships[i].guncount = atoi(temp.c_str());
 
 
+                getline(file,ships[i].hull_class,'	');
+
+                getline(file,ships[i].ship_class,'	');
+
+                getline(file,ships[i].nation,'	');
+
+                getline(file,ships[i].skill1,'	');
+
+                getline(file,ships[i].skill2,'	');
+
+                getline(file,ships[i].skill3,'	');
+
+                getline(file,ships[i].skill4);
+
+
+
         }
+        else getline(file,temp);
     }
 
+}
+
+void assign_ship(ship *assigned_ship, int *fail){
+fstream file ("list_of_ships.txt");
+string temp;
+getline(file,temp);
+if(!file.is_open()){
+    *fail = 1;
+    return;
+}
+
+if((*assigned_ship).name[0] == '$') return; //don't overwrite custom ships
+
+int i = 0;
+while(true){//searches for the correct ship on the list
+        string name;
+        getline(file,name, '	');
+        if((*assigned_ship).name == name) break;
+        getline(file,temp);
+        i++;
+        if(file.eof()){
+            *fail = 2;
+            return;
+        }
+}
+getline(file,temp, '	');
+(*assigned_ship).efficency = atof(temp.c_str());
+getline(file,temp, '	');
+(*assigned_ship).guncount = atoi(temp.c_str());
+getline(file,(*assigned_ship).hull_class, '	');
+getline(file,(*assigned_ship).ship_class, '	');
+getline(file,(*assigned_ship).nation,'	');
+
+getline(file,(*assigned_ship).skill1, '	');
+getline(file,(*assigned_ship).skill2, '	');
+getline(file,(*assigned_ship).skill3, '	');
+getline(file,(*assigned_ship).skill4);
 }
 
 
@@ -387,8 +255,8 @@ string fileinput;
     int ship_count;
     ifstream shipfile ("ships.txt");
     if(!shipfile.is_open()){
-        cout << "Failed to find ships.txt";
-        getch();
+        cout << "Failed to find ships.txt" << endl;
+        system("pause");
         return 1;
     }
 
@@ -402,8 +270,8 @@ string fileinput;
     bool failed = false;
     read_ships(&ships[0], atoi(fileinput.c_str()), &failed);
     if(failed){
-        cout << "Please check ships.txt";
-        getch();
+        cout << "Please check ships.txt" << endl;
+        system("pause");
         return 1;
     }
 
@@ -412,10 +280,12 @@ string fileinput;
     //read guns
     ifstream guns ("guns.txt");
     if(!guns.is_open()){
-        cout << "Failed to find guns.txt";
-        getch();
+        cout << "Failed to find guns.txt" << endl;
+        system("pause");
         return 1;
     }
+
+
 
 
 
@@ -431,29 +301,36 @@ string fileinput;
     cout<< "loaded" << endl;
 
 
-    /* Will set properties of ships later here, but need to have the files ready first, and that means manually getting stats to spreadsheet
-    shiplist normal_ships;
-    shiplist pr_ships;
-    shiplist colab_ships;
+    cout << "Assigning ship stats..." << endl;
 
-    normal_ships.set_ships("normalships.txt");
-    pr_ships.set_ships("prships.txt");
-    colab_ships.set_ships("colabships.txt");
+    int failure = 0;
+    for(int i = 0; i < ship_count; i++){
+        assign_ship((ships+i), &failure);
+        if(failure == 1){
+            cout << "list_of_ships.txt not found" << endl;
+            system("pause");
+            return 1;
+        }
+        if(failure == 2){
+            cout << "Ship called " << ships[i].name << " not found on the list" << endl;
+            return 1;
+        }
+    }
 
-    */
+
     int guncount = 0;
 
     for(int i = 0;  i < ship_count; i++){
-        guncount =+ ships[i].guncount;
+        guncount += ships[i].guncount;
     }
 
     long int guncomp_count = pow(amount_of_guns,ship_count);
-    dps_comb *guncomp;
-    guncomp =  new dps_comb [guncomp_count];
+
+    vector <dps_comb> guncomp;
 
     cout << "calculating dps, this might take a while...";
 
-    calculate_dps       (ship_count,    amount_of_guns,     guncomp_count,      guncount,       AAgun,     ships,       guncomp           );
+    calculate_dps       (ship_count,    amount_of_guns,     guncomp_count,      guncount,       AAgun,     ships,       &guncomp           );
 
      cout << endl <<
      "---------------------------------------------" << endl <<
@@ -461,6 +338,7 @@ string fileinput;
      "|--------------------------------------------" << endl;
      for(int i = 0; i < ship_count;i++)
      cout << "|   " << guncomp[guncomp_count-1].gun[i] << endl;
+     cout << "|   DPS: " << guncomp[guncomp_count-1].dps << endl;
 cout << "|--------------------------------------------" << endl;
 
 
