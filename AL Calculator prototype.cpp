@@ -46,57 +46,10 @@ struct dps_comb{
 public:
 string gun[6];
 float dps;
-
-
 };
 
-void dps_quickSort(dps_comb *arr, int left, int right){
-// modified from http://www.algolist.net/Algorithms/Sorting/Quicksort if you want me to remove this please say
-      int i = left, j = right;
-
-      dps_comb tmp;
-
-      long double pivot = arr[(left + right) / 2].dps;
-
-
-      /* partition */
-      while (i <= j) {
-
-            while (arr[i].dps < pivot)
-
-                  i++;
-
-            while (arr[j].dps > pivot)
-
-                  j--;
-
-            if (i <= j) {
-
-                  tmp = arr[i];
-
-                  arr[i] = arr[j];
-
-                  arr[j] = tmp;
-
-                  i++;
-
-                  j--;
-
-            }
-
-      };
-
-
-      /* recursion */
-
-      if (left < j)
-
-            dps_quickSort(arr, left, j);
-
-      if (i < right)
-
-            dps_quickSort(arr, i, right);
-
+bool dps_compare(dps_comb comb1, dps_comb comb2){
+    return (comb1.dps < comb2.dps);
 };
 
 void nextgun(int *current_gun, int shipcount, int amount_of_guns, int number){
@@ -110,8 +63,7 @@ void nextgun(int *current_gun, int shipcount, int amount_of_guns, int number){
 
 }
 
-void calculate_dps(int shipcount, int amount_of_guns, int guncomp_count, int guncount, gun *guns, ship *ships, dps_comb *dps_combi){
-
+void calculate_dps(int shipcount, int amount_of_guns, int guncomp_count, int guncount, gun *guns, ship *ships, vector <dps_comb> *dps_combi){
 
 
 int current_gun[shipcount];
@@ -120,15 +72,12 @@ for(int i = 0; i < shipcount; i++){
 };
 
 
-float total_reload = 0;
-float total_damage = 0;
 
 for(long int i = 0; i < guncomp_count; i++){
-                cout << endl;
-            for(int a = 0; a < shipcount; a++){
-                cout << current_gun[a] << endl;
-            };
-            system("pause");
+
+            dps_comb temp;
+            float total_reload = 0;
+            float total_damage = 0;
 
             for(int a = 0; a < shipcount; a++){
                         float to_root = 100+ships[a].reload;
@@ -137,9 +86,6 @@ for(long int i = 0; i < guncomp_count; i++){
                         ships[a].AA_damage = guns[current_gun[a]].dmg * ships[a].efficency * (100 + ships[a].AA + guns[current_gun[a]].AA) / 100;
                         ships[a].AA_gun_name = guns[current_gun[a]].name;
             };
-
-            total_reload = 0;
-            total_damage = 0;
 
             for(int j = 0; j<shipcount; j++){
                 total_damage += (ships[j].AA_damage * ships[j].guncount);
@@ -154,16 +100,16 @@ for(long int i = 0; i < guncomp_count; i++){
 
             for(int j = 0; j<shipcount; j++){
                 if(ships[j].guncount != 0){
-                    dps_combi[i].gun[j] = ships[j].name + ": " + ships[j].AA_gun_name;}
-                else dps_combi[i].gun[j] = ships[j].name + " has no AA gun slots";
+                    temp.gun[j] = ships[j].name + ": " + ships[j].AA_gun_name;}
+                else temp.gun[j] = ships[j].name + " has no AA gun slots";
             }
 
-            dps_combi[i].dps = total_damage/total_reload;
-
+            temp.dps = total_damage/total_reload;
+            dps_combi->push_back(temp);
             nextgun(current_gun,shipcount,amount_of_guns, 0);
     }
     cout << endl << "Sorting results, this might take a while...";
-    dps_quickSort(&dps_combi[0],0, guncomp_count-1);
+    sort(dps_combi->begin(),dps_combi->end(),dps_compare);
 };
 
 
@@ -178,6 +124,7 @@ void read_guns(gun *AAgun){
 
 
 for (int i=0; i<how_many; i++){
+
         getline(file,fileinput);
         AAgun[i].name = fileinput;
 
@@ -378,13 +325,12 @@ string fileinput;
     }
 
     long int guncomp_count = pow(amount_of_guns,ship_count);
-    dps_comb *guncomp;
-    guncomp =  new dps_comb [guncomp_count];
 
+    vector <dps_comb> guncomp;
 
     cout << "calculating dps, this might take a while...";
 
-    calculate_dps       (ship_count,    amount_of_guns,     guncomp_count,      guncount,       AAgun,     ships,       guncomp           );
+    calculate_dps       (ship_count,    amount_of_guns,     guncomp_count,      guncount,       AAgun,     ships,       &guncomp           );
 
      cout << endl <<
      "---------------------------------------------" << endl <<
@@ -392,7 +338,7 @@ string fileinput;
      "|--------------------------------------------" << endl;
      for(int i = 0; i < ship_count;i++)
      cout << "|   " << guncomp[guncomp_count-1].gun[i] << endl;
-     cout << "|   DPS: " << guncomp[guncount-1].dps << endl;
+     cout << "|   DPS: " << guncomp[guncomp_count-1].dps << endl;
 cout << "|--------------------------------------------" << endl;
 
 
