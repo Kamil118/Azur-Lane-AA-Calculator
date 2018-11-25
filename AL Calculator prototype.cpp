@@ -39,6 +39,7 @@ float reload;
 int dmg;
 int AA;
 int range;
+int maxcount;
 };
 
 struct dps_comb{
@@ -54,7 +55,7 @@ bool dps_compare(dps_comb comb1, dps_comb comb2){
 
 void nextgun(int *current_gun, int shipcount, int amount_of_guns, int number){
 
-    if(number == shipcount) return;
+    if(number >= shipcount) return;//you somehow tried to change the gun of a ship that doesn't exist, this should probably be an exception but i can't code
     if(current_gun[number] < (amount_of_guns-1)) current_gun[number]++;
     else {
             current_gun[number] = 0;
@@ -62,6 +63,30 @@ void nextgun(int *current_gun, int shipcount, int amount_of_guns, int number){
     }
 
 }
+
+bool check_max_gun(gun *guns, int *current_gun, int guncount, ship *ships, int shipcount){//checks if player has enough guns
+int amount_of_guns[guncount];//makes an array for all guns in the guns.txt file
+
+for(int i = 0; i < guncount;i++){
+    amount_of_guns[i] = 0;
+}
+
+for(int i = 0; i < shipcount;i++){//for every ship adds up amount of guns it has to equip to respective slot in the amount_of_guns array
+    if(ships[i].hull_class!="AR"&&ships[i].name!="Isuzu"){
+    amount_of_guns[current_gun[i]] += ships[i].guncount;//for most ships
+    }
+    else amount_of_guns[current_gun[i]] += ships[i].guncount/2;//for ships with aa gun+1
+
+}
+for(int i = 0; i < guncount; i++){
+    if(amount_of_guns[i] > guns[i].maxcount) { //return false player doesn't have enough guns
+    return false;
+    }
+}
+return true;
+
+}
+
 
 void calculate_dps(int shipcount, int amount_of_guns, int guncomp_count, int guncount, gun *guns, ship *ships, vector <dps_comb> *dps_combi){
 
@@ -87,6 +112,8 @@ for(long int i = 0; i < guncomp_count; i++){
                         ships[a].AA_gun_name = guns[current_gun[a]].name;
             };
 
+
+            if(check_max_gun(guns,current_gun,amount_of_guns,ships, shipcount)){
             for(int j = 0; j<shipcount; j++){
                 total_damage += (ships[j].AA_damage * ships[j].guncount);
             }
@@ -105,6 +132,9 @@ for(long int i = 0; i < guncomp_count; i++){
             }
 
             temp.dps = total_damage/total_reload;
+            }
+            else temp.dps = 0;
+
             dps_combi->push_back(temp);
             nextgun(current_gun,shipcount,amount_of_guns, 0);
     }
@@ -125,6 +155,7 @@ void read_guns(gun *AAgun){
 
 for (int i=0; i<how_many; i++){
 
+
         getline(file,fileinput);
         AAgun[i].name = fileinput;
 
@@ -139,6 +170,9 @@ for (int i=0; i<how_many; i++){
 
         getline(file,fileinput);
         AAgun[i].range = atoi(fileinput.c_str());
+
+        getline(file,fileinput);
+        AAgun[i].maxcount = atof(fileinput.c_str());
 
         getline(file,fileinput);
 }
