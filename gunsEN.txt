@@ -5,24 +5,28 @@ Quadruple 40mm L60 Mk2 Bofors
 120
 45
 28
+99
 
 8x 40mm QF 2 pounder Pom Pom
 1.17
 128
 45
 25
+99
 
 Twin 105mm SK C/33
 1.24
 122
 45
 32
+99
 
 Twin 113mm BD RP10 Mk
 1.36
 130
 45
 35
+99
 
 Twin 20mm AA Oerlikon
 0.52
@@ -35,3 +39,4 @@ Twin 20mm AA Oerlikon
 15
 12
 15
+99

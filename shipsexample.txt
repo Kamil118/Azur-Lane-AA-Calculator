@@ -1,7 +1,9 @@
-6
-a0	293	400	Example1	1	1
-a0	293	182	Belfap	1	1
-a0	1000	182	Example2	1	1
-a0	293	182	AnotherBelfap	1	1
-a0	293	748	Example3	1	1
-a0	45	145	Example4	1	1
+6											
+$Hood	333	159	1	1	BB	Admiral	Royal				
+$Nagato	193	155	1	1	BB	None	Sakura				
+$Lusty	302	119	0	0	CV	None	Royal				
+$Sandy	600	198	1.85	1	CL	None	Union				
+$Ayanami	143	244	0.75	1	BB	None	Sakura				
+$Yukikaze	187	228	0.75	1	DD	None	Sakura				
+Ship Name	AA (without AA gun)	Reload	Efficiency (in 1.00)	AA Guncount	Hull Class	Ship's Class	Nation	Skill1	Skill2	Skill3	Skill4 (don't forget about tabs in between empty skill names when filling manually)
+start with $ for unknow ships			Set these only for unknown ships								
