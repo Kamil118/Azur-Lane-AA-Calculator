@@ -5,34 +5,40 @@ Quadruple 40mm L60 Mk2 Bofors
 120
 45
 28
+99
 
 8x 40mm QF 2 pounder Pom Pom
 1.17
 128
 45
 25
+99
 
 Twin Bofors 40mm Autocannon STAAG
 0.80
 96
 45
 30
+99
 
 Twin 113mm BD RP10 Mk
 1.36
 130
 45
 35
+99
 
 Twin 20mm AA Oerlikon
 0.52
 45
 25
 18
+99
 
 12.7mm AA M2 Browning
 0.33
 15
 12
 15
+99
 
